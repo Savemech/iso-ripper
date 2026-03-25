@@ -1,0 +1,19 @@
+[package]
+name = "iso-ripper"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance parallel ISO image processor"
+
+[dependencies]
+cdfs = { path = "cdfs-local" }
+clap = { version = "4", features = ["derive"] }
+rayon = "1"
+anyhow = "1"
+time = { version = "0.3", features = ["formatting", "macros"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+panic = "unwind"
